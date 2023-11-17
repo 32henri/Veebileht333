@@ -36,10 +36,36 @@
 
   </div>
 
-  <div class="shop" id="shop">
+  <div id="reviews-container"></div>
 
+  <div id="add-review-form">
+      <h2>Add a Review</h2>
+      <form id="reviewForm">
+          <label for="productName">Product:</label>
+          <select id="productName">
+	            <option value="">Vali Kartul</option>
+	            <option value="a">Eesti kartul</option>
+	            <option value="b">Läti kartul</option>
+	            <option value="c">Briti kartul</option>
+	            <option value="d">Hiina kartul</option>
+	            <option value="e">Portugali kartul</option>
+              <!-- Dynamically populate product options from data.js -->
+          </select>
 
+          <label for="userName">Your Name:</label>
+          <input type="text" id="userName" required>
+
+          <label for="userRating">Rating:</label>
+          <input type="number" id="userRating" min="1" max="5" required>
+
+          <label for="userComment">Comment:</label>
+          <textarea id="userComment" rows="4" required></textarea>
+
+          <button type="button" onclick="submitReview()">Submit Review</button>
+      </form>
   </div>
 
 </body>
+<script src="data.js"></script>
+<script src="main.js"></script>
 </html>

@@ -4,6 +4,7 @@ let shopItemsData = [
         name: "Eesti kartul",
         price: 2,
         desc: "Eesti talu kartul(hind on kilo kohta).",
+        reviews: [],
         img: "imagelink"
     },
     {
