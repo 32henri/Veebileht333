@@ -1,71 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">  
-    <title>Reviews</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
 <body>
+  <!-- Navbar section -->
   <div class="navbar">
-    <a href="index.html">
-      <h2>Henri Shop</h2>
-    </a>
-    <a href="discounts.html">
-      <h2>Discounts</h2>
-    </a>
-    <a href="reviews.html">
-      <h2>Reviews</h2>
-    </a>
-    <a href="">
-      <h2></h2>
-    </a>
-    <a href="">
-      <h2></h2>
-    </a>
+    <!-- Navigation links -->
+    <a href="admin.html"><h2>Henri Shop</h2></a>
+    <a href="discounts.html"><h2>Discounts</h2></a>
+    <a href="reviews.html"><h2>Reviews</h2></a>
+    <!-- Additional navigation links or placeholders -->
+    <a href=""><h2></h2></a>
+    <a href=""><h2></h2></a>
     
-
+    <!-- Cart icon and amount -->
     <a href="cart.html">
       <div class="cart">
         <i class="bi bi-cart2"></i>
         <div id="cartAmount" class="cartAmount">0</div>
       </div>
     </a>
-
   </div>
 
-  <div id="reviews-container"></div>
+  <!-- Shop section -->
+  <div class="shop" id="shop">
+    <!-- Form to input text and select a product -->
+    <h2>Enter Text:</h2>
+    <form id="userInputForm">
+      <!-- Container for the dropdown and text input (inline-block) -->
+      <div style="display: inline-block;">
+        <!-- Dropdown list of products -->
+        <select id="productDropdown">
+          <option value="Eesti kartul">Eesti kartul</option>
+          <option value="Läti kartul">Läti kartul</option>
+          <option value="Briti kartul">Briti kartul</option>
+          <option value="Hiina kartul">Hiina kartul</option>
+          <option value="Portugali kartul">Portugali kartul</option>
+          <!-- Add more product options as needed -->
+        </select>
+      </div>
+      <!-- Text input for user input (inline-block) -->
+      <div id="userText" contenteditable="true" placeholder="Type something..."></div>
+      <!-- Submit button -->
+<button type="button" onclick="displayUserInput()" id="submitButton">Submit</button>
+    </form>
 
-  <div id="add-review-form">
-      <h2>Add a Review</h2>
-      <form id="reviewForm">
-          <label for="productName">Product:</label>
-          <select id="productName">
-	            <option value="">Vali Kartul</option>
-	            <option value="a">Eesti kartul</option>
-	            <option value="b">Läti kartul</option>
-	            <option value="c">Briti kartul</option>
-	            <option value="d">Hiina kartul</option>
-	            <option value="e">Portugali kartul</option>
-              <!-- Dynamically populate product options from data.js -->
-          </select>
-
-          <label for="userName">Your Name:</label>
-          <input type="text" id="userName" required>
-
-          <label for="userRating">Rating:</label>
-          <input type="number" id="userRating" min="1" max="5" required>
-
-          <label for="userComment">Comment:</label>
-          <textarea id="userComment" rows="4" required></textarea>
-
-          <button type="button" onclick="submitReview()">Submit Review</button>
-      </form>
+    <!-- Review section -->
+    <div id="reviewSection">
+      <h2>Reviews:</h2>
+      <ul id="reviewList"></ul>
+    </div>
   </div>
 
+  <!-- Scripts section -->
+  <script src="script.js"></script>
+  <script src="reviews.js"></script>
 </body>
-<script src="data.js"></script>
-<script src="main.js"></script>
 </html>

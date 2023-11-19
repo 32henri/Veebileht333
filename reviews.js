@@ -1,95 +1,30 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const reviewsContainer = document.getElementById('reviews-container');
-    const productNameSelect = document.getElementById('productName');
-    const reviewForm = document.getElementById('reviewForm');
+function displayUserInput() {
+  // Get the selected product from the dropdown
+  var selectedProduct = document.getElementById("productDropdown").value;
 
-    // Assuming you have a products array for reviews as well
-    let products = [
-        {
-            id: "a",
-            name: "Eesti kartul",
-            reviews: []
-        },
-        {
-            id: "b",
-            name: "Läti kartul",
-            reviews: []
-        },
-        {
-            id: "c",
-            name: "Briti kartul",
-            reviews: []
-        },
-        {
-            id: "d",
-            name: "Hiina kartul",
-            reviews: []
-        },
-        {
-            id: "e",
-            name: "Portugali kartul",
-            reviews: []
-        }
-    ];
+  // Get the content entered by the user
+  var userContent = document.getElementById("userText").innerText;
 
-    // Populate product options in the form
-    products.forEach(product => {
-        const option = document.createElement('option');
-        option.value = product.id;
-        option.textContent = product.name;
-        productNameSelect.appendChild(option);
-    });
+  // Display the selected product, review, and user content as a review
+  if (selectedProduct.trim() !== "" && userContent.trim() !== "") {
+    // Create a new list item for the review
+    var reviewItem = document.createElement("li");
+    
+    // Create a div as a box to style the review
+    var reviewBox = document.createElement("div");
+    reviewBox.classList.add("reviewBox");
 
-    // Display initial reviews
-    displayReviews();
+    // Set the content inside the box
+    reviewBox.innerHTML = "<strong>Product:</strong> " + selectedProduct + "<br><strong>Review:</strong> " + userContent;
 
-    // Function to display reviews
-    function displayReviews() {
-        reviewsContainer.innerHTML = '';
+    // Append the review box to the review list
+    reviewItem.appendChild(reviewBox);
+    document.getElementById("reviewList").appendChild(reviewItem);
 
-        // Iterate through products and display reviews
-        products.forEach(product => {
-            const productReviews = product.reviews.map(review => {
-                return `
-                    <div class="review">
-                        <p>User: ${review.user}</p>
-                        <p class="rating">Rating: ${review.rating}</p>
-                        <p>Comment: ${review.comment}</p>
-                    </div>
-                `;
-            }).join('');
-
-            const productElement = document.createElement('div');
-            productElement.innerHTML = `
-                <h2>${product.name}</h2>
-                ${productReviews}
-            `;
-
-            reviewsContainer.appendChild(productElement);
-        });
-    }
-
-    // Function to submit a new review
-    window.submitReview = function() {
-        const productId = productNameSelect.value;
-        const userName = document.getElementById('userName').value;
-        const userRating = parseInt(document.getElementById('userRating').value);
-        const userComment = document.getElementById('userComment').value;
-
-        // Find the product by ID
-        const product = products.find(p => p.id === productId);
-
-        // Add the new review to the product
-        product.reviews.push({
-            user: userName,
-            rating: userRating,
-            comment: userComment,
-        });
-
-        // Display updated reviews
-        displayReviews();
-
-        // Reset the form
-        reviewForm.reset();
-    };
-});
+    // Clear the selected product and content in the div
+    document.getElementById("productDropdown").value = "";
+    document.getElementById("userText").innerText = "";
+  } else {
+    alert("Please select a product and enter some text before submitting a review.");
+  }
+}
