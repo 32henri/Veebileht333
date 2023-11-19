@@ -17,7 +17,7 @@ let shopItemsData = [
     {
         id: "c",
         name: "Briti kartul",
-        price: 2,
+        price: 12,
         desc: "Briti talu kartul(hind on kilo kohta).",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDTgbqwChWmOyMAaqFtp1YWoIStOoDk-uGeLHVdDwtoQ&s"
     },
@@ -35,4 +35,15 @@ let shopItemsData = [
         desc: "Portugali tänava kartul(hind on kilo kohta).",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQrjvfXBkFqTqYfz8Xxyrpmw2_Z0D125ctqUsXYwN55g&s"
     }
+]
+
+let shopDiscountItemsData = [
+    {
+        id: "c",
+        name: "Briti kartul",
+        price: 12.99,
+        desc: "Briti talu kartul(hind on kilo kohta).",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDTgbqwChWmOyMAaqFtp1YWoIStOoDk-uGeLHVdDwtoQ&s"
+    },
+
 ]

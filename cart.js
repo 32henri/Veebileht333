@@ -32,7 +32,15 @@ let generateCartItems = () => {
       .map((x) => {
         let { id, item } = x;
         let search = shopItemsData.find((x) => x.id === id) || [];
-        let { img, price, name } = search;
+        let { img, name } = search;
+        let price = search.price; // Fetch the original price from shopItemsData
+
+        // If the item is in shopDiscountItemsData, use the discounted price
+        let discountItem = shopDiscountItemsData.find((discountedItem) => discountedItem.id === id);
+        if (discountItem) {
+          price = discountItem.price;
+        }
+
         return `
       <div class="cart-item">
         <img width="100" src=${img} alt="" />
@@ -42,7 +50,7 @@ let generateCartItems = () => {
           <div class="title-price-x">
             <h4 class="title-price">
               <p>${name}</p>
-              <p class="cart-item-price">$ ${price}</p>
+              <p class="cart-item-price">$ ${price.toFixed(2)}</p>
             </h4>
             <i onclick="removeItem(${id})" class="bi bi-x-lg"></i>
           </div>
@@ -55,7 +63,7 @@ let generateCartItems = () => {
             </div>
           </div>
 
-          <h3>$ ${item * price}</h3>
+          <h3>$ ${(item * price).toFixed(2)}</h3>
         
         </div>
       </div>
@@ -154,12 +162,19 @@ let TotalAmount = () => {
       .map((x) => {
         let { id, item } = x;
         let filterData = shopItemsData.find((x) => x.id === id);
+        
+        // If the item is in shopDiscountItemsData, use the discounted price
+        let discountItem = shopDiscountItemsData.find((discountedItem) => discountedItem.id === id);
+        if (discountItem) {
+          return discountItem.price * item;
+        }
+
         return filterData.price * item;
       })
       .reduce((x, y) => x + y, 0);
 
     return (label.innerHTML = `
-    <h2>Total Bill : $ ${amount}</h2>
+    <h2>Total Bill : $ ${amount.toFixed(2)}</h2>
     <button class="checkout">Checkout</button>
     <button onclick="clearCart()" class="removeAll">Clear Cart</button>
     `);

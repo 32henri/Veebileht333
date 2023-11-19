@@ -213,3 +213,16 @@
     max-width: 400px; /* Set your desired max width */
     word-wrap: break-word; /* Allow content to wrap within the box */
   }
+  #reviewSection {
+    margin-left: 30px; /* Add your desired margin-top value */
+  }
+  #discounts {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.crossed-out {
+  text-decoration: line-through;
+}
